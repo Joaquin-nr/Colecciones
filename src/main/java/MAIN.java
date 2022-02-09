@@ -1,23 +1,32 @@
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Random;
 public class MAIN {
     public static void main(String[] args) {
-        int ArrayN[] = new int[25];
-        float suma =0;
-        float prom=0;
-        //llenando el array
-        for (int i = 0; i < ArrayN.length; i++) {
-            ArrayN[i]=0+(int)(Math.random()*100);
-        }
-        System.out.println("      -SIN ORDENAR-");
-        mostrarN.mostrar(ArrayN);
-        ordenar.ordenabucketsort(ArrayN);
-        System.out.println("      -ORDENADO-");
-        mostrarN.mostrar(ArrayN);
-        for (int i = 0; i < ArrayN.length; i++) {
-            suma = suma + ArrayN[i];
-        }
-        System.out.println("Suma: "+ suma);
-        prom=suma/ ArrayN.length;
-        System.out.println("Promedio: "+prom);
+        LinkedList lista = new LinkedList();
 
+        Random numeroA = new Random();
+        int numero;
+
+        // lista de 25 elementos
+        for(int i = 0; i < 25; i++){
+            numero = numeroA.nextInt(100)+1; // ingresar numeros aleatorios 0 - 100
+            lista.add(numero);
+        }
+        // Ordenar lista
+        Collections.sort(lista);
+
+        System.out.println("Lista de "+lista.size() + " elementos\n" + lista);
+        // sumar
+        int suma = 0;
+        for (int i = 0; i < lista.size(); i++) {
+            suma += (int) lista.get(i);
+
+        }
+        float s = suma;
+        float promedio = (float)(s/lista.size());
+
+        System.out.println("la suma es: " + suma + "\nPromedio: " + promedio);
     }
 }
